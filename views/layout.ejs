@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="/">Overthinker Blog</a></h1>
+  </header>
+  <main>
+    <%- body %>
+  </main>
+  <footer>
+    <form action="/subscribe" method="post" class="newsletter">
+      <input type="email" name="email" placeholder="Subscribe to newsletter" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p>&copy; <%= new Date().getFullYear() %> Overthinker Blog</p>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

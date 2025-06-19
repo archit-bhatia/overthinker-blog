@@ -1,0 +1,32 @@
+<% layout('layout', { title: post.title }) %>
+<article class="post-detail">
+  <h2><%= post.title %></h2>
+  <p><%= post.content %></p>
+  <div class="post-meta">
+    <span id="likes"><%= post.likes %></span> likes
+    <form id="like-form" action="/posts/<%= post.id %>/like" method="post">
+      <button type="submit">Like</button>
+    </form>
+  </div>
+</article>
+<section class="comments">
+  <h3>Comments</h3>
+  <% comments.forEach(c => { %>
+    <div class="comment">
+      <strong><%= c.name || 'Anonymous' %>:</strong> <%= c.content %>
+    </div>
+  <% }) %>
+  <form action="/posts/<%= post.id %>/comments" method="post" class="comment-form">
+    <input type="text" name="name" placeholder="Your name">
+    <textarea name="content" placeholder="Your comment" required></textarea>
+    <button type="submit">Add Comment</button>
+  </form>
+</section>
+<script>
+  document.getElementById('like-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const res = await fetch(e.target.action, { method: 'POST' });
+    const data = await res.json();
+    document.getElementById('likes').textContent = data.likes;
+  });
+</script>

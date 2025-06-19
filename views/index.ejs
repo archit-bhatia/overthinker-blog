@@ -1,0 +1,17 @@
+<% layout('layout', { title: 'Home' }) %>
+<a href="/posts/new" class="new-post">Create Post</a>
+<section class="posts">
+  <% posts.forEach(post => { %>
+    <article class="post">
+      <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+      <p><%= post.content.substring(0, 200) %>...</p>
+      <div class="post-meta">
+        <span><%= post.likes %> likes</span>
+        <a href="/posts/<%= post.id %>">Read more</a>
+      </div>
+    </article>
+  <% }) %>
+  <% if (posts.length === 0) { %>
+    <p>No posts yet. <a href="/posts/new">Write one</a>!</p>
+  <% } %>
+</section>

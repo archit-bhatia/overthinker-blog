@@ -1,0 +1,6 @@
+<% layout('layout', { title: 'New Post' }) %>
+<form action="/posts" method="post" class="post-form">
+  <input type="text" name="title" placeholder="Title" required>
+  <textarea name="content" placeholder="Your thoughts" required></textarea>
+  <button type="submit">Publish</button>
+</form>
