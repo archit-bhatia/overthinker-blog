@@ -1,4 +1,4 @@
-<% layout('layout', { title: 'New Post' }) %>
+<% title = 'New Post'; layout('layout') %>
 <form action="/posts" method="post" class="post-form">
   <input type="text" name="title" placeholder="Title" required>
   <textarea name="content" placeholder="Your thoughts" required></textarea>

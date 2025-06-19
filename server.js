@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const db = require('./db');
 
 const app = express();
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
@@ -10,11 +12,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', async (req, res) => {
   const posts = await db.all('SELECT * FROM posts ORDER BY created_at DESC');
-  res.render('index', { posts });
+  res.render('index', { posts, title: 'Home' });
 });
 
 app.get('/posts/new', (req, res) => {
-  res.render('newPost');
+  res.render('newPost', { title: 'New Post' });
 });
 
 app.post('/posts', async (req, res) => {
@@ -26,7 +28,7 @@ app.post('/posts', async (req, res) => {
 app.get('/posts/:id', async (req, res) => {
   const post = await db.get('SELECT * FROM posts WHERE id = ?', [req.params.id]);
   const comments = await db.all('SELECT * FROM comments WHERE post_id = ? ORDER BY created_at ASC', [req.params.id]);
-  res.render('post', { post, comments });
+  res.render('post', { post, comments, title: post.title });
 });
 
 app.post('/posts/:id/comments', async (req, res) => {
