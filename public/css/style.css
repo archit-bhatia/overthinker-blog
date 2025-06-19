@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  background: #f8f8f8;
+}
+header, footer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.post, .post-detail {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.post-meta, .comment {
+  margin-top: 0.5rem;
+  color: #666;
+}
+.post-form input, .post-form textarea, .comment-form textarea, .comment-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+button {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
+.new-post {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.newsletter {
+  margin-top: 2rem;
+}
